@@ -82,16 +82,14 @@ How to make a classic and sometimes borring Todo App, into a modern and attracti
     $ yarn run test:cov
     ```
 
-- Frontend
+  - Frontend
 
-- Create React App using Vite: `yarn create vite`
-- For this project we are using Typescript
-- Intall the needed dependencies:
-- yarn add react-query axios framer-motion
-
-  - Tailwindcss: follow [this instructions](https://tailwindcss.com/docs/guides/vite)
-
-  - Running the app:
+    - Create React App using Vite: `yarn create vite`
+    - For this project we are using Typescript
+    - Intall the needed dependencies:
+    - yarn add react-query axios framer-motion
+    - Tailwindcss: follow [this instructions](https://tailwindcss.com/docs/guides/vite)
+    - Running the app:
 
     ```
     #Development
