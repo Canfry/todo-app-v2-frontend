@@ -3,15 +3,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Todos from './pages/Todos';
 
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(false);
   return (
-    <div className={isDarkmode === true ? 'dark' : ''}>
+    <div className={`h-screen ${isDarkmode === true ? 'dark' : ''}`}>
       <Router>
         <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode} />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/todos' element={<Todos />} />
         </Routes>
       </Router>
     </div>

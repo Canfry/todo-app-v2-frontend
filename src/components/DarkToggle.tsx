@@ -16,7 +16,7 @@ export default function DarkToggle({
         </button>
       ) : (
         <button onClick={toggle}>
-          <MdLightMode className='text-3xl text-yellow-300' />
+          <MdLightMode className='text-3xl text-slate-900' />
         </button>
       )}
     </>
