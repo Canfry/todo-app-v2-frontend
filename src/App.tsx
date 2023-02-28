@@ -15,6 +15,7 @@ function App() {
         <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode} />
         <Routes>
           <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/todos' element={<Todos />} />
         </Routes>

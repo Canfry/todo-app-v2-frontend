@@ -3,8 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Login() {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -19,14 +17,14 @@ export default function Login() {
     password,
   };
 
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData((prevState) => ({
       ...prevState,
-      [e.currentTarget.name]: e.currentTarget.value,
+      [e.target.name]: e.target.value,
     }));
   }
 
-  async function getTodos() {
+  async function signIn() {
     const response = await axios.post(
       'http://localhost:5500/auth/login',
       userData
@@ -42,7 +40,7 @@ export default function Login() {
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    getTodos();
+    signIn();
     navigate('/todos');
   }
 
@@ -80,7 +78,7 @@ export default function Login() {
               type='submit'
               className='bg-slate-700 text-white text-xl py-2 px-4 rounded-md'
             >
-              Login
+              Signin
             </button>
           </form>
           <p className='text-center px-2'>
