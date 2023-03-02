@@ -57,7 +57,7 @@ export default function Register() {
 
   return (
     <>
-      <div className='h-[calc(100vh-160px)] w-full grid place-items-center dark:bg-slate-900 overflow-hidden'>
+      <div className='h-[calc(100vh-160px)] w-full grid place-items-center dark:bg-slate-900'>
         <div className=' mt-20 py-20 px-20 flex flex-col gap-8 w-[50%] m-auto border border-neutral-300 dark:bg-slate-900/80 dark:border dark:border-cyan-300 rounded-md text-slate-700 dark:text-neutral-50'>
           <h1 className='text-center text-4xl'>REGISTER</h1>
           <form

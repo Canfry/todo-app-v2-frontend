@@ -9,7 +9,7 @@ import Todos from './pages/Todos';
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(false);
   return (
-    <div className={`h-screen ${isDarkmode === true ? 'dark' : ''}`}>
+    <div className={`h-full ${isDarkmode === true ? 'dark' : ''}`}>
       <Router>
         <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode} />
         <Routes>
