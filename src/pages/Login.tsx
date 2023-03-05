@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -8,14 +8,14 @@ export default function Login() {
     password: '',
   });
 
-  const navigate = useNavigate();
-
   const { email, password } = formData;
 
   const userData = {
     email,
     password,
   };
+
+  const navigate = useNavigate();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData((prevState) => ({
@@ -25,17 +25,21 @@ export default function Login() {
   }
 
   async function signIn() {
-    const response = await axios.post(
-      'http://localhost:5500/auth/login',
-      userData
-    );
+    try {
+      const response = await axios.post(
+        'http://localhost:5500/auth/login',
+        userData
+      );
 
-    if (response.data) {
-      localStorage.setItem('user', JSON.stringify(response.data));
+      if (response.data) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+      }
+
+      console.log(response.data);
+      // return response.data;
+    } catch (error: AxiosError | any) {
+      console.log(error.message);
     }
-
-    console.log(response.data);
-    return response.data;
   }
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {

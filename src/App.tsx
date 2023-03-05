@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Todos from './pages/Todos';
+import NewTodo from './pages/NewTodo';
 
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(false);
@@ -17,6 +18,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/todos' element={<Todos />} />
+          <Route path='/todos/new' element={<NewTodo />} />
         </Routes>
       </Router>
     </div>
