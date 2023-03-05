@@ -76,14 +76,14 @@ export default function Login() {
 
             <button
               type='submit'
-              className='bg-slate-700 text-white text-xl py-2 px-4 rounded-md'
+              className='bg-slate-700 text-white text-xl py-2 px-4 rounded-md hover:bg-slate-600 '
             >
               Signin
             </button>
           </form>
           <p className='text-center px-2'>
             Don't have an account yet?{' '}
-            <Link to='/register' className='text-cyan-500 font-bold'>
+            <Link to='/register' className='text-cyan-500 hover:underline'>
               Register
             </Link>
           </p>
