@@ -13,14 +13,13 @@ type TodoList = Todo[];
 
 export default function Todos() {
   const [todos, setTodos] = useState<TodoList | undefined>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
   const token = JSON.parse(localStorage.getItem('user') || '');
-  console.log(token.access_token);
+  console.log(token);
 
-  async function getTodos() {
+  async function getTodos(): Promise<TodoList | undefined> {
     try {
       const response = await axios.get<TodoList>(
         'http://localhost:5500/todos',
@@ -31,15 +30,20 @@ export default function Todos() {
           },
         }
       );
-      if (!isLoading) {
-        setTodos(response.data);
-      }
 
-      // return response.data;
-    } catch (error: AxiosError | any) {
-      if (error.response) {
-        console.log(error.response.data.message);
-      }
+      setTodos(response.data);
+
+      console.log(response.data);
+      return response.data;
+      // return todos
+    } catch (error) {
+      // if (axios.isAxiosError(error)) {
+      //   throw error;
+      // } else {
+      //   throw new Error('Not authorized');
+      // }
+      const err: any = error;
+      alert(err?.response.data);
     }
   }
 
@@ -58,8 +62,8 @@ export default function Todos() {
 
   return (
     <>
-      {/* {Response.error.name ? ( */}
-      {/* <div className='w-full h-full dark:bg-slate-900 dark:text-neutral-300 text-slate-900'>
+      {/* {AxiosError ? (
+        <div className='w-full h-full dark:bg-slate-900 dark:text-neutral-300 text-slate-900'>
           <div className='w-[80%] mx-auto text-center pt-10'>
             <h1 className='text-4xl'>ERROR CODE: 401</h1>
             <h2 className='dark:text-white'>
@@ -80,40 +84,37 @@ export default function Todos() {
               </button>
             </div>
           </div>
-        </div> */}
-      {/* // ) : ( */}
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div className='w-full h-full dark:bg-slate-900 dark:text-neutral-300 text-slate-900'>
-          <div className='w-[80%] mx-auto flex justify-end'>
+        </div>
+      ) : ( */}
+      <div className='w-full h-full dark:bg-slate-900 dark:text-neutral-300 text-slate-900'>
+        <div className='w-[80%] mx-auto flex justify-end'>
+          <button
+            onClick={signOut}
+            className='flex items-center gap-2 border border-slate-600 rounded-md py-1 px-2'
+          >
+            <FaSignOutAlt />
+            Signout
+          </button>
+        </div>
+        <div className='w-[80%] mx-auto flex flex-col items-start h-full py-8 '>
+          <div className='flex items-center justify-between w-full'>
+            <h1 className='text-5xl'>My todos</h1>
             <button
-              onClick={signOut}
-              className='flex items-center gap-2 border border-slate-600 rounded-md py-1 px-2'
+              className='bg-slate-700 text-white h-[70%] px-2 rounded-md hover:bg-slate-600 text-sm'
+              onClick={handleClick}
             >
-              <FaSignOutAlt />
-              Signout
+              Create Todo
             </button>
           </div>
-          <div className='w-[80%] mx-auto flex flex-col items-start h-full py-8 '>
-            <div className='flex items-center justify-between w-full'>
-              <h1 className='text-5xl'>My todos</h1>
-              <button
-                className='bg-slate-700 text-white h-[70%] px-2 rounded-md hover:bg-slate-600 text-sm'
-                onClick={handleClick}
-              >
-                Create Todo
-              </button>
-            </div>
-            <hr className='w-full h-[2px] bg-slate-900 dark:bg-neutral-300 my-8' />
-            {todos?.length === 0 ? (
-              <p>There is no todos</p>
-            ) : (
-              todos?.map((todo) => <li key={todo.id}>{todo.description}</li>)
-            )}
-          </div>
+          <hr className='w-full h-[2px] bg-slate-900 dark:bg-neutral-300 my-8' />
+          {todos?.length === 0 ? (
+            <p>There is no todos</p>
+          ) : (
+            todos?.map((todo) => <li key={todo.id}>{todo.description}</li>)
+          )}
         </div>
-      )}
+      </div>
+      {/* )} */}
     </>
   );
 }

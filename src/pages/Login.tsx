@@ -33,6 +33,7 @@ export default function Login() {
 
       if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
+        navigate('/todos');
       }
 
       console.log(response.data);
@@ -45,7 +46,6 @@ export default function Login() {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     signIn();
-    navigate('/todos');
   }
 
   return (
