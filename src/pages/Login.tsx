@@ -27,7 +27,7 @@ export default function Login() {
 
   // const url = 'http://localhost:5500/auth/login';
   const url =
-    'https://railway.app/project/9da80383-7567-46e3-a73f-38c7a4c12676/service/00b686a2-a4db-4604-a39a-93079dbcb431?id=663ca37d-74d5-4592-ba48-01dc2f70182c';
+    'https://railway.app/project/9da80383-7567-46e3-a73f-38c7a4c12676/service/00b686a2-a4db-4604-a39a-93079dbcb431?id=663ca37d-74d5-4592-ba48-01dc2f70182c/auth/login';
 
   async function signIn() {
     try {
