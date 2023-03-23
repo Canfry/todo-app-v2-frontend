@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -6,10 +6,10 @@ import { FaSignOutAlt } from 'react-icons/fa';
 export interface Todo {
   id: string;
   description: string;
-  status: boolean;
+  status: string;
 }
 
-type TodoList = Todo[];
+export type TodoList = Todo[];
 
 export default function Todos() {
   const [todos, setTodos] = useState<TodoList | undefined>();
@@ -17,7 +17,6 @@ export default function Todos() {
   const navigate = useNavigate();
 
   const token = JSON.parse(localStorage.getItem('user') || '');
-  console.log(token);
 
   async function getTodos(): Promise<TodoList | undefined> {
     try {
@@ -35,24 +34,42 @@ export default function Todos() {
 
       console.log(response.data);
       return response.data;
-      // return todos
     } catch (error) {
-      // if (axios.isAxiosError(error)) {
-      //   throw error;
-      // } else {
-      //   throw new Error('Not authorized');
-      // }
-      const err: any = error;
-      alert(err?.response.data);
+      console.log(error);
+      // alert(err?.response.data);
     }
   }
+
+  // async function createTodo(): Promise<Todo | undefined> {
+  //   try {
+  //     const response = await axios.post<TodoList>(
+  //       'http://localhost:5500/todos/new',
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token.access_token}`,
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     );
+
+  //     setTodos(response.data);
+
+  //     console.log(response.data);
+  //     return response.data;
+  //   } catch (error) {
+  //     const err: any = error;
+  //     alert(err?.response.data);
+  //   }
+  // }
 
   useEffect(() => {
     getTodos();
   }, []);
 
   function handleClick() {
-    navigate('/todos/new');
+    if (token) {
+      navigate('/todos/new');
+    }
   }
 
   function signOut() {

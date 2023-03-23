@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-type UserData = {
+export type UserData = {
   email: string;
   password: string;
   firstName?: string;
@@ -72,6 +72,7 @@ export default function Register() {
                 name='firstName'
                 className='border border-slate-300 mb-8 rounded-md py-1 px-2'
                 onChange={handleChange}
+                required
               />
             </div>
             <div className='flex flex-col'>
@@ -82,6 +83,7 @@ export default function Register() {
                 name='lastName'
                 className='border border-slate-300 mb-8 rounded-md py-1 px-2'
                 onChange={handleChange}
+                required
               />
             </div>
             <div className='flex flex-col'>
@@ -92,6 +94,7 @@ export default function Register() {
                 name='email'
                 className='border border-slate-300 mb-8 rounded-md py-1 px-2'
                 onChange={handleChange}
+                required
               />
             </div>
             <div className='flex flex-col'>
@@ -102,6 +105,7 @@ export default function Register() {
                 name='password'
                 className='border border-slate-300 mb-8 rounded-md py-1 px-2'
                 onChange={handleChange}
+                required
               />
             </div>
 

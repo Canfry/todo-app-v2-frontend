@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
 
@@ -22,14 +22,21 @@ export default function Login() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+    console.log(email, password);
   }
+
+  // const url = 'http://localhost:5500/auth/login';
+  const url =
+    'https://railway.app/project/9da80383-7567-46e3-a73f-38c7a4c12676/service/00b686a2-a4db-4604-a39a-93079dbcb431?id=663ca37d-74d5-4592-ba48-01dc2f70182c';
 
   async function signIn() {
     try {
-      const response = await axios.post(
-        'http://localhost:5500/auth/login',
-        userData
-      );
+      const response = await axios.post(url, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: [userData],
+      });
 
       if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
@@ -65,6 +72,7 @@ export default function Login() {
                 name='email'
                 className='border border-slate-300 mb-8 rounded-md py-1 px-2 dark:text-slate-900'
                 onChange={handleChange}
+                required
               />
             </div>
             <div className='flex flex-col'>
@@ -75,6 +83,7 @@ export default function Login() {
                 name='password'
                 className='border border-slate-300 mb-8 rounded-md py-1 px-2 dark:text-slate-900'
                 onChange={handleChange}
+                required
               />
             </div>
 
