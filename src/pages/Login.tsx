@@ -26,7 +26,8 @@ export default function Login() {
 
   // const url = 'http://localhost:5500/auth/login';
   // const url = `${process.env.API_URL}/auth/login`;
-  const url = 'https://www.todo-app-v2-backend-production.up.railway.app';
+  const url =
+    'https://www.todo-app-v2-backend-production.up.railway.app/auth/login';
 
   async function signIn() {
     try {
