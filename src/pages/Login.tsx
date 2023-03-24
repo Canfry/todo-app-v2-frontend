@@ -22,11 +22,10 @@ export default function Login() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    console.log(email, password);
   }
 
   // const url = 'http://localhost:5500/auth/login';
-  const url = 'todo-app-v2-backend-production.up.railway.app/auth/login';
+  const url = `${process.env.API_URL}/auth/login`;
 
   async function signIn() {
     try {
@@ -42,7 +41,6 @@ export default function Login() {
         navigate('/todos');
       }
 
-      console.log(response.data);
       // return response.data;
     } catch (error: AxiosError | any) {
       console.log(error.message);

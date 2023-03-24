@@ -26,9 +26,11 @@ export default function NewTodo() {
 
   const token = JSON.parse(localStorage.getItem('user') || '');
 
+  const url = `${process.env.API_URL}/todos/new`;
+
   async function createTodo(): Promise<Todo | undefined> {
     try {
-      const response = await axios.post('http://localhost:5500/todos/new', {
+      const response = await axios.post(url, {
         headers: {
           Authorization: `Bearer ${token.access_token}`,
           'Content-Type': 'application/json',
@@ -40,7 +42,6 @@ export default function NewTodo() {
         ],
       });
       if (response.data) {
-        console.log(response.data);
         return response.data;
       }
 
@@ -59,7 +60,6 @@ export default function NewTodo() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    console.log(description, status);
   }
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {

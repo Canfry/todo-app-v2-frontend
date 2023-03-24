@@ -18,21 +18,19 @@ export default function Todos() {
 
   const token = JSON.parse(localStorage.getItem('user') || '');
 
+  const url = `${process.env.API_URL}/todos`;
+
   async function getTodos(): Promise<TodoList | undefined> {
     try {
-      const response = await axios.get<TodoList>(
-        'http://localhost:5500/todos',
-        {
-          headers: {
-            Authorization: `Bearer ${token.access_token}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.get<TodoList>(url, {
+        headers: {
+          Authorization: `Bearer ${token.access_token}`,
+          'Content-Type': 'application/json',
+        },
+      });
 
       setTodos(response.data);
 
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);

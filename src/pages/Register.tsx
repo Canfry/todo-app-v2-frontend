@@ -28,6 +28,8 @@ export default function Register() {
     lastName,
   };
 
+  const url = `${process.env.API_URL}/auth/register`;
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData((prevState) => ({
       ...prevState,
@@ -36,10 +38,7 @@ export default function Register() {
   }
 
   async function signup() {
-    const response = await axios.post(
-      'http://localhost:5500/auth/register',
-      userData
-    );
+    const response = await axios.post(url, userData);
 
     if (response.data) {
       localStorage.setItem('user', JSON.stringify(response.data));
