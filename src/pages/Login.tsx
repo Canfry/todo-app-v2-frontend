@@ -25,7 +25,8 @@ export default function Login() {
   }
 
   // const url = 'http://localhost:5500/auth/login';
-  const url = `${process.env.API_URL}/auth/login`;
+  // const url = `${process.env.API_URL}/auth/login`;
+  const url = 'https://www.todo-app-v2-backend-production.up.railway.app';
 
   async function signIn() {
     try {
@@ -40,7 +41,7 @@ export default function Login() {
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/todos');
       }
-
+      console.log(url);
       // return response.data;
     } catch (error: AxiosError | any) {
       console.log(error.message);
