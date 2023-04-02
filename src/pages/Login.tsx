@@ -24,25 +24,21 @@ export default function Login() {
     }));
   }
 
-  // const url = 'http://localhost:5500/auth/login';
-  const url = `${import.meta.env.VITE_APP_API_URL}/auth/login`;
+  const url = 'http://localhost:5500/auth/login';
+  // const url = `${import.meta.env.VITE_BASE_URL}/auth/login`;
   // const url =
   //   'https://todo-app-v2-backend-production.up.railway.app/auth/login';
 
   async function signIn() {
     try {
-      const response = await axios.post(url, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: [userData],
-      });
+      const response = await axios.post(url, userData);
 
       if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/todos');
       }
       console.log(url);
+      console.log(import.meta.env.VITE_BASE_URL);
       // return response.data;
     } catch (error: AxiosError | any) {
       console.log(error.message);

@@ -28,7 +28,8 @@ export default function Register() {
     lastName,
   };
 
-  const url = `${process.env.API_URL}/auth/register`;
+  // const url = `${process.env.API_URL}/auth/register`;
+  const url = 'http://localhost:5500/auth/login';
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setFormData((prevState) => ({

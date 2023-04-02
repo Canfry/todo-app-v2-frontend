@@ -18,7 +18,8 @@ export default function Todos() {
 
   const token = JSON.parse(localStorage.getItem('user') || '');
 
-  const url = `${import.meta.env.VITE_API_URL}/todos`;
+  // const url = `${import.meta.env.VITE_BASE_URL}/todos`;
+  const url = 'http://localhost:5500/todos';
 
   async function getTodos(): Promise<TodoList | undefined> {
     try {
