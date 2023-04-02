@@ -18,7 +18,7 @@ export default function Todos() {
 
   const token = JSON.parse(localStorage.getItem('user') || '');
 
-  const url = `${process.env.REACT_APP_API_URL}/todos`;
+  const url = `${import.meta.env.VITE_API_URL}/todos`;
 
   async function getTodos(): Promise<TodoList | undefined> {
     try {

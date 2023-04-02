@@ -26,7 +26,7 @@ export default function NewTodo() {
 
   const token = JSON.parse(localStorage.getItem('user') || '');
 
-  const url = `${process.env.API_URL}/todos/new`;
+  const url = `${import.meta.env.VITE_API_URL}/todos/new`;
 
   async function createTodo(): Promise<Todo | undefined> {
     try {
