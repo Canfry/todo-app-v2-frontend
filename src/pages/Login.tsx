@@ -33,6 +33,10 @@ export default function Login() {
     try {
       const response = await axios.post(url, userData, {
         withCredentials: false,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
       });
 
       if (response.data) {

@@ -27,6 +27,8 @@ export default function Todos() {
         headers: {
           Authorization: `Bearer ${token.access_token}`,
           withCredentials: false,
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
         },
       });
 
