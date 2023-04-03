@@ -24,10 +24,10 @@ export default function Login() {
     }));
   }
 
-  // const url = 'http://localhost:5500/auth/login';
-  const url = `${import.meta.env.VITE_BASE_URL}/auth/login`;
   // const url =
   //   'https://todo-app-v2-backend-production.up.railway.app/auth/login';
+  // const url = 'http://localhost:5500/auth/login';
+  const url = `${import.meta.env.VITE_BASE_URL}/auth/login`;
 
   async function signIn() {
     try {
