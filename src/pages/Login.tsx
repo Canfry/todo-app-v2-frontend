@@ -31,7 +31,9 @@ export default function Login() {
 
   async function signIn() {
     try {
-      const response = await axios.post(url, userData);
+      const response = await axios.post(url, userData, {
+        withCredentials: false,
+      });
 
       if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
