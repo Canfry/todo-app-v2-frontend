@@ -26,7 +26,6 @@ export default function Todos() {
       const response = await axios.get<TodoList>(url, {
         headers: {
           Authorization: `Bearer ${token.access_token}`,
-
           withCredentials: false,
         },
       });
