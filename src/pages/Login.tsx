@@ -26,17 +26,13 @@ export default function Login() {
 
   // const url =
   //   'https://todo-app-v2-backend-production.up.railway.app/auth/login';
-  // const url = 'http://localhost:5500/auth/login';
-  const url = `${import.meta.env.VITE_BASE_URL}/auth/login`;
+  const url = 'http://localhost:5500/auth/login';
+  // const url = `${import.meta.env.VITE_BASE_URL}/auth/login`;
 
   async function signIn() {
     try {
-      const response = await axios.post(url, userData, {
-        withCredentials: false,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
+      const response = await axios.post(url, {
+        userData,
       });
 
       if (response.data) {

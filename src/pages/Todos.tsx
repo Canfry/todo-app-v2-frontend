@@ -18,17 +18,14 @@ export default function Todos() {
 
   const token = JSON.parse(localStorage.getItem('user') || '');
 
-  const url = `${import.meta.env.VITE_BASE_URL}/todos`;
-  // const url = 'http://localhost:5500/todos';
+  // const url = `${import.meta.env.VITE_BASE_URL}/todos`;
+  const url = 'http://localhost:5500/todos';
 
   async function getTodos(): Promise<TodoList | undefined> {
     try {
       const response = await axios.get<TodoList>(url, {
         headers: {
           Authorization: `Bearer ${token.access_token}`,
-          withCredentials: false,
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
         },
       });
 
